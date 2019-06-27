@@ -11,7 +11,7 @@ Edit script with favorite editor and change IP variable to attack-IP and PORT va
 
 -b or --bash to display reverse shells for bash."\
 -p or --perl to display reverse shells for perl."\
--py or --python to display reverse shells for python."\	
+-py or --python to display reverse shells for python."
 -P or --php to display reverse shells for php."\
 -r or --ruby to display reverse shells for ruby."\
 -n or --netcat to display reverse shells for netcat."\
