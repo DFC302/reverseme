@@ -7,7 +7,7 @@ chmod reverseme.sh
 Edit script with favorite editor and change IP variable to attack-IP and PORT variable to attack-port
 
 # Usage
-./reverseme [argument]\
+./reverseme [argument]
 
 -b or --bash to display reverse shells for bash."\
 -p or --perl to display reverse shells for perl."\
