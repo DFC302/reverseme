@@ -17,4 +17,4 @@ Edit script with favorite editor and change IP variable to attack-IP and PORT va
 -n or --netcat to display reverse shells for netcat."\
 -t or --telnet to display reverse shells for telnet."\
 -j or --java to display reverse shells for java."\
--s or --sources to display sources\n\n"\
+-s or --sources to display sources"
