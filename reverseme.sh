@@ -9,8 +9,8 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m'
 
-IP='10.10.14.21'
-PORT=4444
+IP='ATTACK-IP-HERE'
+PORT=ATTACK-PORT-HERE
 
 clear # clear the screen
 
