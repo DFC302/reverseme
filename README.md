@@ -11,10 +11,10 @@ Script was tested in gnome enviornment on a Debian system. Desired terminal can 
 # Usage
 ./reverseme.sh [argument](s)\
 
-reverseme.sh -r [RHOST] -l [LPORT] -s [REVERSE-SHELL-SELECTION] (OPTIONAL) -L [SPAWN-NC-LISTENER]\
+reverseme.sh -r [rhost] -l [lport] -s [reverse-shell-selection] (OPTIONAL) -L [spawn-nc-listener]\
 
 reverseme.sh -h Displays help menu\
 
-reverseme.sh -V Displays version information\
+reverseme.sh -S Displays source information\
 
-reverseme.sh -S Displays source information
+reverseme.sh -V Displays version information
