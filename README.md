@@ -9,7 +9,7 @@ Edit script with favorite editor and change IP variable to attack-IP and PORT va
 Script was tested in gnome enviornment on a Debian system. Desired terminal can be set in script as well.
 
 # Usage
-./reverseme.sh [argument](s)
+./reverseme.sh [argument]
 
 reverseme.sh -r [rhost] -l [lport] -s [reverse-shell-selection] (OPTIONAL) -L [spawn-nc-listener]
 
