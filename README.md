@@ -9,16 +9,12 @@ Edit script with favorite editor and change IP variable to attack-IP and PORT va
 Script was tested in gnome enviornment on a Debian system. Desired terminal can be set in script as well.
 
 # Usage
-./reverseme.sh [argument]
+./reverseme.sh [argument](s)\
 
--b or --bash to display reverse shells for bash."\
--p or --perl to display reverse shells for perl."\
--py or --python to display reverse shells for python."\
--P or --php to display reverse shells for php."\
--r or --ruby to display reverse shells for ruby."\
--n or --netcat to display reverse shells for netcat."\
--t or --telnet to display reverse shells for telnet."\
--j or --java to display reverse shells for java."\
--s or --sources to display sources"\
+reverseme.sh -r [RHOST] -l [LPORT] -s [REVERSE-SHELL-SELECTION] (OPTIONAL) -L [SPAWN-NC-LISTENER]\
 
---terminal as second argument to spawn a netcat listener"
+reverseme.sh -h Displays help menu\
+
+reverseme.sh -V Displays version information\
+
+reverseme.sh -S Displays source information
