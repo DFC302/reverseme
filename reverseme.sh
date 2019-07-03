@@ -150,9 +150,13 @@ function spawn_listener() {
 function help() {
     printf "\n\t\t${RED}##########${NC}HELP MENU${RED}##########${NC}\n\n"
 
-    printf "\nreverseme.sh -h Display's this help menu\n"
+    printf "\nreverseme.sh -h Display's this help menu.\n"
 
-    printf "\nUsuage: reverseme.sh -r [RHOST] -l [LPORT] -s [REVERSE-SHELL-SELECTION] ${GREEN}OPTIONAL${NC} -L [SPAWN-NC-LISTENER]\n\n"
+    printf "\nUsuage: reverseme.sh -r [RHOST] -l [LPORT] -s [REVERSE-SHELL-SELECTION] ${GREEN}OPTIONAL${NC} -L [SPAWN-NC-LISTENER]\n"
+
+    printf "\nreverseme.sh -S Display's source information.\n"
+
+    printf "\nreverseme.sh -V Display's version information.\n\n"
 
     exit 0
 }
