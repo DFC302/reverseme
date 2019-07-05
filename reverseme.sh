@@ -210,7 +210,7 @@ function sources() {
 function version() {
     printf "\n\t${RED}##########${NC}VERSION${RED}##########${NC}\n\n"
 
-    printf "\nVersion:\t2.1\n\n"
+    printf "\nVersion:\t2.2\n\n"
 
     exit 0
 }
@@ -274,8 +274,22 @@ while getopts "hsVdH:L:S:l" arg; do
     esac
 done
 
+# Check if host is valid IP and lport is valid port
+if [[ ! ${HOST} =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]] ; then
+    printf "Please give valid IP for host!\n\n"
+    exit 1
+elif [[ ! ${LPORT} =~ ^[0-9]{1,5}$ ]] ; then
+    printf "Please give valid port for lport!\n\n"
+    exit 1
+fi
+
+
 if [[ -z ${HOST} ]] || [[ -z ${LPORT} ]] ; then
     printf "\nPlease specify an attack-ip and/or a listening port!\n\n"
+    exit 1
+
+elif [[ ${HOST} ]]  || [[ ${LPORT} ]] && [[ -z ${SELECTION} ]] ; then
+    printf "\nPlease specify a reverse shell to display!\n\n"
     exit 1
 
 elif [[ "${SELECTION}" == "bash" ]] || [[ "${SELECTION}" == "BASH" ]] || [[ "${SELECTION}" == "Bash" ]] ; then
@@ -309,6 +323,6 @@ elif [[ "${SELECTION}" == "java" ]] || [[ "${SELECTION}" == "JAVA" ]] || [[ "${S
     java
 
 else
-    printf "\nInvalid argument!\n\n"
+    printf "\nNot a valid argument!\n\n"
     exit 1
 fi
