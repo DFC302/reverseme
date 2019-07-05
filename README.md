@@ -12,6 +12,8 @@ reverseme.sh -H [host] -L [lport] -S [reverse-shell-selection] (OPTIONAL) -l [sp
 
 reverseme.sh -h Displays help menu
 
+reverseme.sh -d Displays list of available shells
+
 reverseme.sh -s Displays source information
 
 reverseme.sh -V Displays version information
