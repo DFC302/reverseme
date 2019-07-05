@@ -8,11 +8,11 @@ chmod reverseme.sh
 # Usage
 ./reverseme.sh [argument]
 
-reverseme.sh -r [rhost] -l [lport] -s [reverse-shell-selection] (OPTIONAL) -L [spawn-nc-listener]
+reverseme.sh -H [host] -L [lport] -S [reverse-shell-selection] (OPTIONAL) -l [spawn-nc-listener]
 
 reverseme.sh -h Displays help menu
 
-reverseme.sh -S Displays source information
+reverseme.sh -s Displays source information
 
 reverseme.sh -V Displays version information
 
