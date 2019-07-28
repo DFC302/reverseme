@@ -3,7 +3,7 @@ A quick reference script that can easily display reverse shells for different la
 This script can also spawn a netcat listener at the same time.
 
 # Installation
-chmod reverseme.sh 
+chmod 755 reverseme.sh 
 
 # Usage
 ./reverseme.sh [argument]
