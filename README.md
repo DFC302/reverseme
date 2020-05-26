@@ -155,10 +155,10 @@ Warning: lport and lhost both needed FIRST to display reverse shells correctly!
 
 ### Common errors?
 #### When I use the --save flag, I get an error: *error cant open display*.
-This usually happens systems without a GUI. You can check out the following [help](https://askubuntu.com/questions/305654/xclip-on-headless-server) to see if you can find a solution.
+This usually happens with systems without a GUI. You can check out the following [help](https://askubuntu.com/questions/305654/xclip-on-headless-server) to see if you can find a solution.
 
 #### *reverseme* tells me that I need the lhost and/or lport first, when I use the --langs flag before those flags.
-This is because each language is stored in a function in anothr bash file. Essentially, main.sh is calling the function that holds the reverse shells of the language you have chosen. If you call that function first, the rest of the flags are not taken into account as variables. Use the *--langs [lang]* as the last part of your syntax.
+This is because each language is stored in a function in another bash file. Essentially, main.sh is calling the function that holds the reverse shells of the language you have chosen. If you call that function first, the rest of the flags are not taken into account as variables. Use the *--langs [lang]* as the last part of your syntax.
 
 #### I am getting a *permission denied* when running *reverseme*.
 I have seen this before on some of the test systems I have tested *reverseme* on. The easiest solution is to do this:
