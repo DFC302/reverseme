@@ -71,8 +71,3 @@ sed -i "4i\\. ${DIRECTORY}/shells.sh" main.sh
 echo "Checking if xclip is installed..."
 xclip -h > /dev/null 2>&1 \
 || apt install xclip -y ; exit 0
-
-# Let user know install script has finished.
-echo "Done. reverseme should be installed on your system now."
-echo "Do not forget to source your .bashrc file: source ~/.bashrc"
-exit 0
