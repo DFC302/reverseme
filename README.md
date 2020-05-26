@@ -19,7 +19,7 @@ If at anytime you move *reverseme* after running install.sh, you will need to ed
 ```
 git clone https://github.com/DFC302/reverseme.git
 cd reverseme/
-bash install.sh
+sudo bash install.sh
 cd
 source ~/.bashrc
 ```
