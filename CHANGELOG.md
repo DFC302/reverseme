@@ -17,7 +17,7 @@ Monday May 25, 2020
 * --list flag added.
 * Edited help menu.
 * Install file introduced for installation.
-* Bash completeion file introduced.
+* Bash completion file introduced.
 * New listener environment added (xfce).
 * Ability to save reverse shell automatically to clipboard. (Uses xclip).
 * Version information, title information, and contact information now moved under --version flag.
