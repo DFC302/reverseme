@@ -3,13 +3,13 @@ Easily display reverse shells in different languages with the listening host and
 
 ## Installation
 By default, *reverseme* is set to install in your home directory. \
-Using your favorite text editor, change the username for the USER variable. \
-Also change the directory path for the DIRECTORY variable. **Use absolute path names. It just makes it easier.** \
+Using your favorite text editor, change the username for the USER variable in *install.sh*. \
+Also change the directory path for the DIRECTORY variable in *install.sh*. **Use absolute path names. It just makes it easier.** \
 *reverseme* uses \.bash_aliases to add the alais for *reverseme*. \
 *reversme* will source the bash_completion file automatically to your \.bashrc file.
 
 ##### What if I want to use something different than .bashrc or .bash_aliases?
-You will need to use your favorite text editor and edit the variables ALIAS_FILE and SOURCE_FILE. \
+You will need to use your favorite text editor and edit the variables ALIAS_FILE and SOURCE_FILE in *install.sh*. \
 **Otherwise, leave them alone.**
 
 ##### What if I move *reverseme* after I run the install.sh script?
